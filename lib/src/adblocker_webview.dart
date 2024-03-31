@@ -169,7 +169,6 @@ class _AdBlockerWebviewState extends State<AdBlockerWebview> {
       onTitleChanged: widget.onTitleChanged,
       shouldOverrideUrlLoading: widget.shouldOverrideUrlLoading,
       onDownloadStartRequest: widget.onDownloadStartRequest,
-      onLoadStop: widget.onLoadStop,
       onLoadHttpError: widget.onLoadHttpError,
       onLoadResource: widget.onLoadResource,
       onUpdateVisitedHistory: widget.onUpdateVisitedHistory,
