@@ -52,9 +52,6 @@ class AdBlockerWebview extends StatefulWidget {
 
   final void Function(InAppWebViewController controller, Uri? url)? onLoadStop;
 
-  final void Function(InAppWebViewController controller, Uri? url, int code,
-      String message)? onLoadError;
-
   final void Function(InAppWebViewController controller, Uri? url,
       int statusCode, String description)? onLoadHttpError;
 
