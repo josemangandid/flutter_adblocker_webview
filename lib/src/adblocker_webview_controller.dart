@@ -53,7 +53,7 @@ abstract class AdBlockerWebviewController implements InternalWebviewController {
   // Returns the title of currently loaded webpage
   Future<String?> getTitle();
 
-  Future<String?> getUrl();
+  Future<Uri?> getUrl();
 
   Future<String?> getHtml();
 

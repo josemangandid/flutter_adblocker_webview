@@ -70,7 +70,7 @@ class AdBlockerWebviewControllerImpl implements AdBlockerWebviewController {
   }
 
   @override
-  Future<String?> getUrl() async {
+  Future<Uri?> getUrl() async {
     if (_inAppWebViewController == null) {
       return null;
     }
