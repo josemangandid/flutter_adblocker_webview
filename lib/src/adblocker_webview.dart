@@ -17,13 +17,17 @@ class AdBlockerWebview extends StatefulWidget {
     this.onLoadHttpError,
     this.onLoadResource,
     this.onTitleChanged,
+    this.pullToRefreshController,
     this.onProgressChanged,
     this.onUpdateVisitedHistory,
     this.onConsoleMessage,
     this.shouldOverrideUrlLoading,
     this.onDownloadStartRequest,
     this.onLoadStop,
+    this.initialOptions,
     this.options,
+    this.onWebViewCreated,
+    this.androidOnPermissionRequest,
   });
 
   /// Required: The initial [Uri] url that will be displayed in webview.
@@ -79,6 +83,17 @@ class AdBlockerWebview extends StatefulWidget {
 
   final void Function(InAppWebViewController controller, int progress)?
       onProgressChanged;
+
+  final InAppWebViewGroupOptions? initialOptions;
+
+  final PullToRefreshController? pullToRefreshController;
+
+  final void Function(InAppWebViewController controller)? onWebViewCreated;
+
+  final Future<PermissionRequestResponse?> Function(
+      InAppWebViewController controller,
+      String origin,
+      List<String> resources)? androidOnPermissionRequest;
 
   /// Invoked when a loading error occurred.
   final void Function(
@@ -163,6 +178,10 @@ class _AdBlockerWebviewState extends State<AdBlockerWebview> {
       onLoadResource: widget.onLoadResource,
       onUpdateVisitedHistory: widget.onUpdateVisitedHistory,
       onConsoleMessage: widget.onConsoleMessage,
+      initialOptions: widget.initialOptions,
+      pullToRefreshController: widget.pullToRefreshController,
+      onWebViewCreated: widget.onWebViewCreated,
+      androidOnPermissionRequest: widget.androidOnPermissionRequest,
     );
   }
 }
