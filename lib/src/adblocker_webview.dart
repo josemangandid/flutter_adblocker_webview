@@ -173,7 +173,6 @@ class _AdBlockerWebviewState extends State<AdBlockerWebview> {
       onLoadResource: widget.onLoadResource,
       onUpdateVisitedHistory: widget.onUpdateVisitedHistory,
       onConsoleMessage: widget.onConsoleMessage,
-      initialOptions: widget.initialOptions,
       pullToRefreshController: widget.pullToRefreshController,
       onWebViewCreated: widget.onWebViewCreated,
       androidOnPermissionRequest: widget.androidOnPermissionRequest,
