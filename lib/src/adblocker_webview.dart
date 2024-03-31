@@ -14,7 +14,15 @@ class AdBlockerWebview extends StatefulWidget {
     this.onLoadFinished,
     this.onProgress,
     this.onLoadError,
+    this.onLoadHttpError,
+    this.onLoadResource,
     this.onTitleChanged,
+    this.onProgressChanged,
+    this.onUpdateVisitedHistory,
+    this.onConsoleMessage,
+    this.shouldOverrideUrlLoading,
+    this.onDownloadStartRequest,
+    this.onLoadStop,
     this.options,
   });
 
@@ -31,6 +39,33 @@ class AdBlockerWebview extends StatefulWidget {
   /// Invoked when a page has started loading.
   final void Function(InAppWebViewController controller, Uri? uri)? onLoadStart;
 
+  final Future<NavigationActionPolicy?> Function(
+          InAppWebViewController controller, NavigationAction navigationAction)?
+      shouldOverrideUrlLoading;
+
+  final void Function(InAppWebViewController controller,
+      DownloadStartRequest downloadStartRequest)? onDownloadStartRequest;
+
+  final void Function(InAppWebViewController controller, Uri? url)? onLoadStop;
+
+  final void Function(InAppWebViewController controller, Uri? url, int code,
+      String message)? onLoadError;
+
+  final void Function(InAppWebViewController controller, Uri? url,
+      int statusCode, String description)? onLoadHttpError;
+
+  final void Function(
+          InAppWebViewController controller, LoadedResource resource)?
+      onLoadResource;
+
+  final void Function(
+          InAppWebViewController controller, Uri? url, bool? androidIsReload)?
+      onUpdateVisitedHistory;
+
+  final void Function(
+          InAppWebViewController controller, ConsoleMessage consoleMessage)?
+      onConsoleMessage;
+
   /// Invoked when a page has finished loading.
   final void Function(InAppWebViewController controller, Uri? uri)?
       onLoadFinished;
@@ -41,6 +76,9 @@ class AdBlockerWebview extends StatefulWidget {
   /// Invoked when the page title is changed.
   final void Function(InAppWebViewController controller, String? title)?
       onTitleChanged;
+
+  final void Function(InAppWebViewController controller, int progress)?
+      onProgressChanged;
 
   /// Invoked when a loading error occurred.
   final void Function(
@@ -117,6 +155,14 @@ class _AdBlockerWebviewState extends State<AdBlockerWebview> {
       onLoadStop: widget.onLoadFinished,
       onLoadError: widget.onLoadError,
       onTitleChanged: widget.onTitleChanged,
+      shouldOverrideUrlLoading: widget.shouldOverrideUrlLoading,
+      onDownloadStartRequest: widget.onDownloadStartRequest,
+      onLoadStop: widget.onLoadStop,
+      onLoadError: widget.onLoadError,
+      onLoadHttpError: widget.onLoadHttpError,
+      onLoadResource: widget.onLoadResource,
+      onUpdateVisitedHistory: widget.onUpdateVisitedHistory,
+      onConsoleMessage: widget.onConsoleMessage,
     );
   }
 }
