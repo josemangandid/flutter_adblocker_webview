@@ -70,6 +70,15 @@ class AdBlockerWebviewControllerImpl implements AdBlockerWebviewController {
   }
 
   @override
+  Future<String?> getUrl() async {
+    if (_inAppWebViewController == null) {
+      return null;
+    }
+
+    return _inAppWebViewController!.getUrl();
+  }
+
+  @override
   Future<void> goBack() async {
     if (_inAppWebViewController == null) {
       return;
